@@ -4,7 +4,7 @@
 A Flask-based web application that generates credit card statements in PDF format with multi-language support (English, Tamil, Hindi).
 
 ## Live Demo
-Try it live at [https://hsbcbackend01.replit.app](https://hsbcbackend01.replit.app)
+Try it live at [https://hsbcbackend01.replit.app](https://960285cc-e0b2-4efd-b250-25047c993973-00-3nn69691s02of.spock.replit.dev/)
 
 ## Tech Stack
 - **Backend**: Python/Flask
