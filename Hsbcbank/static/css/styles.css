@@ -1,0 +1,313 @@
+/* HSBC-style theme for Credit Card Statement Generator */
+
+:root {
+  /* HSBC Color Palette */
+  --hsbc-red: #db0011;
+  --hsbc-dark-red: #b10010;
+  --hsbc-light-red: #ff9a9a;
+  --hsbc-white: #ffffff;
+  --hsbc-light-gray: #f4f4f4;
+  --hsbc-medium-gray: #666666;
+  --hsbc-dark-gray: #333333;
+  --hsbc-black: #000000;
+  --hsbc-gradient: linear-gradient(135deg, var(--hsbc-red) 0%, var(--hsbc-dark-red) 100%);
+  --hsbc-hover-shadow: 0 5px 15px rgba(219, 0, 17, 0.3);
+}
+
+body {
+  background-color: var(--hsbc-white);
+  font-family: 'Arial', sans-serif;
+  color: var(--hsbc-black);
+}
+
+.hsbc-header {
+  background-color: var(--hsbc-red);
+  padding: 15px 0;
+  margin-bottom: 20px;
+}
+
+.hsbc-logo {
+  max-height: 40px;
+}
+
+.hsbc-nav-top {
+  background-color: var(--hsbc-dark-gray);
+  color: var(--hsbc-white);
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.hsbc-nav-top a {
+  color: var(--hsbc-white);
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.hsbc-nav-top a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+.hsbc-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 300;
+  color: var(--hsbc-red);
+}
+
+.hsbc-section-title {
+  color: var(--hsbc-red);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card {
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: var(--hsbc-red);
+  border-radius: 0 !important;
+  border-bottom: none;
+  padding: 15px 20px;
+}
+
+.card-header .nav-tabs {
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  border-radius: 0;
+  color: var(--hsbc-white);
+  padding: 10px 15px;
+  margin-right: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-tabs .nav-link.active {
+  background-color: var(--hsbc-white);
+  color: var(--hsbc-red);
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 25px;
+  background-color: var(--hsbc-white);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--hsbc-black);
+}
+
+.form-control {
+  border-radius: 0;
+  border: 1px solid var(--hsbc-medium-gray);
+  padding: 12px 15px;
+  background-color: var(--hsbc-white);
+  color: var(--hsbc-black);
+}
+
+.form-control:focus {
+  border-color: var(--hsbc-red);
+  box-shadow: 0 0 0 0.25rem rgba(219, 0, 17, 0.25);
+}
+
+.btn {
+  border-radius: 0;
+  padding: 10px 20px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--hsbc-red);
+  border-color: var(--hsbc-red);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--hsbc-gradient);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--hsbc-dark-red);
+  border-color: var(--hsbc-dark-red);
+  box-shadow: var(--hsbc-hover-shadow);
+  transform: translateY(-2px);
+}
+
+.btn-primary:hover:before {
+  left: 0;
+}
+
+.btn-secondary {
+  background-color: var(--hsbc-dark-gray);
+  border-color: var(--hsbc-dark-gray);
+}
+
+.btn-info {
+  background-color: var(--bs-info);
+  color: var(--bs-dark);
+  border-color: var(--bs-info);
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.transaction-container {
+  border: 1px solid rgba(219, 0, 17, 0.2);
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: var(--hsbc-white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-item {
+  padding: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.transaction-item:hover {
+  background-color: rgba(219, 0, 17, 0.05);
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.add-transaction-btn {
+  margin-top: 10px;
+  transition: all 0.2s ease;
+}
+
+.add-transaction-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hsbc-hover-shadow);
+}
+
+/* Modal styling */
+.modal-content {
+  border-radius: 0;
+  border: none;
+}
+
+.modal-header {
+  background-color: var(--hsbc-red);
+  color: var(--hsbc-white);
+  border-bottom: none;
+}
+
+.modal-title {
+  font-weight: 600;
+}
+
+.modal-body {
+  padding: 25px;
+  background-color: var(--hsbc-white);
+  color: var(--hsbc-black);
+}
+
+.modal-footer {
+  background-color: var(--hsbc-white);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Table styling */
+.table {
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: var(--hsbc-red);
+  color: var(--hsbc-white);
+  font-weight: 600;
+  border: none;
+}
+
+.table td {
+  border-color: rgba(0, 0, 0, 0.1);
+  color: var(--hsbc-black);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(219, 0, 17, 0.05);
+}
+
+/* Footer styling */
+.hsbc-footer {
+  background-color: var(--hsbc-dark-gray);
+  color: var(--hsbc-white);
+  padding: 30px 0;
+  margin-top: 40px;
+}
+
+.hsbc-footer h5 {
+  color: var(--hsbc-white);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.hsbc-footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.hsbc-footer ul li {
+  margin-bottom: 8px;
+}
+
+.hsbc-footer a {
+  color: var(--hsbc-light-gray);
+  text-decoration: none;
+}
+
+.hsbc-footer a:hover {
+  color: var(--hsbc-white);
+  text-decoration: underline;
+}
+
+.hsbc-footer-bottom {
+  background-color: var(--hsbc-black);
+  color: var(--hsbc-light-gray);
+  padding: 15px 0;
+  font-size: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hsbc-title {
+    font-size: 24px;
+  }
+  
+  .card-header, .card-body {
+    padding: 15px;
+  }
+  
+  .nav-tabs .nav-link {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="{{ language.get('code', 'en') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ language.get('title', 'Credit Card Statement') }}</title>
+    <style>
+        body {
+            font-family: 'Noto Sans', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1, h2, h3 {
+            color: #1a73e8;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        
+        .section-title {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin-top: 0;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f5f5f5;
+        }
+        
+        .row {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .label {
+            font-weight: bold;
+            width: 200px;
+        }
+        
+        .value {
+            flex: 1;
+        }
+        
+        @media print {
+            body {
+                font-size: 12pt;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ language.get('title', 'Credit Card Statement') }}</h1>
+    
+    <div class="section">
+        <h2 class="section-title">{{ language.get('cardholder_info', 'Cardholder Information') }}</h2>
+        <div class="row">
+            <div class="label">{{ language.get('name', 'Name') }}:</div>
+            <div class="value">{{ cardholder.name }}</div>
+        </div>
+        <div class="row">
+            <div class="label">{{ language.get('card_number', 'Card Number') }}:</div>
+            <div class="value">XXXX-XXXX-XXXX-{{ cardholder.card_number[-4:] }}</div>
+        </div>
+        <div class="row">
+            <div class="label">{{ language.get('billing_address', 'Billing Address') }}:</div>
+            <div class="value">{{ cardholder.billing_address|nl2br }}</div>
+        </div>
+        <div class="row">
+            <div class="label">{{ language.get('email', 'Email') }}:</div>
+            <div class="value">{{ cardholder.email }}</div>
+        </div>
+        <div class="row">
+            <div class="label">{{ language.get('phone', 'Phone') }}:</div>
+            <div class="value">{{ cardholder.phone }}</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">{{ language.get('statement_summary', 'Statement Summary') }}</h2>
+        <div class="row">
+            <div class="label">{{ language.get('previous_balance', 'Previous Balance') }}:</div>
+            <div class="value">{{ language.get('currency_symbol', '₹') }} {{ statement.previous_balance|float|round(2) }}</div>
+        </div>
+        <div class="row">
+            <div class="label">{{ language.get('payments_received', 'Payments Received') }}:</div>
+            <div class="value">{{ language.get('currency_symbol', '₹') }} {{ statement.payments_received|float|round(2) }}</div>
+        </div>
+        <div class="row">
+            <div class="label">{{ language.get('purchases_charges', 'Purchases & Charges') }}:</div>
+            <div class="value">{{ language.get('currency_symbol', '₹') }} {{ statement.purchases_charges|float|round(2) }}</div>
+        </div>
+        <div class="row">
+            <div class="label">{{ language.get('finance_charges', 'Finance Charges') }}:</div>
+            <div class="value">{{ language.get('currency_symbol', '₹') }} {{ statement.finance_charges|float|round(2) }}</div>
+        </div>
+        <div class="row">
+            <div class="label">{{ language.get('new_balance', 'New Balance') }}:</div>
+            <div class="value">{{ language.get('currency_symbol', '₹') }} {{ statement.new_balance|float|round(2) }}</div>
+        </div>
+        <div class="row">
+            <div class="label">{{ language.get('credit_limit', 'Credit Limit') }}:</div>
+            <div class="value">{{ language.get('currency_symbol', '₹') }} {{ statement.credit_limit|float|round(2) }}</div>
+        </div>
+        <div class="row">
+            <div class="label">{{ language.get('available_credit', 'Available Credit') }}:</div>
+            <div class="value">{{ language.get('currency_symbol', '₹') }} {{ statement.available_credit|float|round(2) }}</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2 class="section-title">{{ language.get('transactions', 'Transactions') }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>{{ language.get('date', 'Date') }}</th>
+                    <th>{{ language.get('description', 'Description') }}</th>
+                    <th>{{ language.get('amount', 'Amount') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.description }}</td>
+                    <td>{{ language.get('currency_symbol', '₹') }} {{ transaction.amount|float|round(2) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
