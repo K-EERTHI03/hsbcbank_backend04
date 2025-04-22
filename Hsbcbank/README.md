@@ -28,6 +28,9 @@ Flask-Cors
 SQLAlchemy
 reportlab
 gunicorn
+psutil
+locust
+
 ```
 
 ## Setup
